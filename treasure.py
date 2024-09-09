@@ -27,15 +27,15 @@ ____________________________________________________________________
 ''')
 print("Welcome to treasure Island")
 print("Your goal is to find the treasure")
-direction = input("You are at a cross road.Choose btwn left of right?")
+direction = input('You\'r at a cross road.Choose btwn "left" of "right"?').lower()
 if direction ==  "right":
     print("Fall into a hole.Game Over")
 else:
-    action=input("Do you want to swim or wait?")
+    action=input("Do you want to swim or wait?").lower()
     if action == "swim":
         print("Attacked by fish.Game over")
     else:
-        door=input("Which door. Red,Blue or Yellow? ")
+        door=input("Which door. Red,Blue or Yellow? ").lower()
         if door == "blue":
             print("Eaten by beast game over")
         elif door == "red":
