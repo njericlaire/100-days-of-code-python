@@ -55,7 +55,7 @@ def blackjack():
             computer_sum=calculate_score(computer_card)
             print(f"Your card: {your_card} current score:{your_sum} ")
             print(f"Computers first card: {computer_card[0]}")
-            next=input("Type 'y' to get another card type 'n' to pass ")
+           
 
             if your_sum == 0 or computer_sum == 0 or your_sum > 21:
                 continue_playing = False
