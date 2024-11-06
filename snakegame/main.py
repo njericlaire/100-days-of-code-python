@@ -33,7 +33,7 @@ while game_is_on:
         food.refresh()
         snake.extend()
         scoreboard.increase_score()
-    if snake.segment[0].xcor() > 280 or snake.segment[0].xcor() < -280 or snake.segment[0].ycor() > 280 or snake.segment[0].ycor() < -280:
+    if snake.segment[0].xcor() > 290 or snake.segment[0].xcor() < -290 or snake.segment[0].ycor() > 290 or snake.segment[0].ycor() < -290:
         game_is_on=False
         scoreboard.game_over()
 
