@@ -12,7 +12,11 @@ class Snake:
     def create_snake(self):
         for position in STARTING_POSITION:
             self.add_segment(position)
-
+    def reset(self):
+        for seg in self.segment:
+            seg.goto(1000,1000)
+        self.segment.clear()
+        self.create_snake()
 
     def add_segment(self,position):
         tim = Turtle()
