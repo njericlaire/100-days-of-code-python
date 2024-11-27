@@ -6,7 +6,7 @@ COMPANY_NAME = "Tesla Inc"
 STOCK_ENDPOINT = "https://www.alphavantage.co/query"
 NEWS_ENDPOINT = "https://newsapi.org/v2/everything"
 
-#STOCK_API="BLIRQS4WFYSLH0N9"
+STOCK_API="BLIRQS4WFYSLH0N9"
 parameter={
 "function":"TIME_SERIES_DAILY",
 "symbol":STOCK,
@@ -22,34 +22,31 @@ data = r.json()["Time Series (Daily)"]
 data_list=[value for key,value in data.items()]
 diff=abs(float(data_list[1]['4. close'])-float(data_list[0]['4. close']))
 perc=(diff/float(data_list[0]['4. close']))*100
+up_down = None
+if diff > 0:
+    up_down = "🔺"
+else:
+    up_down = "🔻"
 
-
-
-
-
-
-## STEP 2: Use https://newsapi.org/docs/endpoints/everything
-# Instead of printing ("Get News"), actually fetch the first 3 articles for the COMPANY_NAME. 
-#HINT 1: Think about using the Python Slice Operator
 
 
 if perc>1:
     parameter2 = {
-        #'apiKey': 'eeef6001cf314d7ba80e1a91cf4bf57b',
-        'q': 'Apple'
+        'apiKey': 'eeef6001cf314d7ba80e1a91cf4bf57b',
+        'q': COMPANY_NAME
     }
 
     response = requests.get(NEWS_ENDPOINT,params=parameter2)
 
-    print (response.json)
+    articles=response.json()["articles"]
+    three_articles=articles[:3]
+    print(three_articles)
+    formatted_articles = [f"{STOCK}: {up_down}{perc}%\nHeadline: {article['title']}. \nBrief: {article['description']}" for
+        article in three_articles]
+    print(formatted_articles)
 
-## STEP 3: Use twilio.com/docs/sms/quickstart/python
-# Send a separate message with each article's title and description to your phone number. 
-#HINT 1: Consider using a List Comprehension.
 
 
-
-#Optional: Format the SMS message like this: 
 """
 TSLA: 🔺2%
 Headline: Were Hedge Funds Right About Piling Into Tesla Inc. (TSLA)?. 
